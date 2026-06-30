@@ -1,5 +1,6 @@
 export type tokenDto = {
-    token_access:string;
+    gerenciador:string;
+    token:string;
     name?:string;
     isContrassenha?:boolean
 }

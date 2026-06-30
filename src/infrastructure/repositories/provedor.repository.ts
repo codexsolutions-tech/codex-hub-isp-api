@@ -17,6 +17,7 @@ export default class ProvedorRepository implements IProvedorRepository{
         const result = await this._db.Execulte<any>("SELECT * FROM provedores WHERE codigo_provedor = $1", [codigoProvedor])
         
         const provedor = result[0];
+
         return new Provedor(
             provedor.empresa,
             provedor.nome_fantasia,
@@ -26,7 +27,8 @@ export default class ProvedorRepository implements IProvedorRepository{
             provedor.codigo_api_gerenciador,
             provedor.chave_api_gerenciador,
             provedor.nome_administrador,
-            provedor.cpfcnpj
+            provedor.cnpj,
+            provedor.dominio_ixc
         );
     }
 

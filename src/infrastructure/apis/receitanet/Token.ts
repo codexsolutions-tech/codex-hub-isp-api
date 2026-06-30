@@ -1,5 +1,5 @@
 export type Token = {
-    token_access:string;
+    access_token:string;
     name:string;
     isContrassenha:boolean
 }

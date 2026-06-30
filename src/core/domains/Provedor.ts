@@ -14,9 +14,9 @@ export default class Provedor {
     private ChaveApiGerenciador:string;
     public NomeAdministrador:string;
     public CpfCnpj:string;
-    
+    public DominioIxc?:string;
 
-    constructor(empresa:string, nomeFantasia:string, codigoProvedor:number, status:estatus, gerenciador:eGerenciador, codigoApiGerenciador:number, chaveApiGerenciador:string, nomeAdministrador:string, cpfcnpj:string){
+    constructor(empresa:string, nomeFantasia:string, codigoProvedor:number, status:estatus, gerenciador:eGerenciador, codigoApiGerenciador:number, chaveApiGerenciador:string, nomeAdministrador:string, cpfcnpj:string, dominio:string = ""){
         this.Id = uuidv4();
         this.Empresa = empresa;
         this.NomeFantasia = nomeFantasia;
@@ -27,6 +27,7 @@ export default class Provedor {
         this.ChaveApiGerenciador = chaveApiGerenciador;
         this.NomeAdministrador = nomeAdministrador;
         this.CpfCnpj = cpfcnpj;
+        this.DominioIxc = dominio
 
     }
 

@@ -10,17 +10,12 @@ export default class RequestService {
 
     public async Requst<T>(configRequest:configRequest) : Promise<T> {
         
-        const body = configRequest.body === null ? "" :  JSON.stringify(configRequest.body);
-        //const auhorization = configRequest.token == null ? `Authorization: ${configRequest.typeToken} ${configRequest.token}`
+        const body = configRequest.body === null ? "" :  JSON.stringify(configRequest.body);            
         
-        const response = await fetch(`${this.URLBase}/${configRequest.resource}`, {
+        const response = await fetch(`${this.URLBase}${configRequest.resource}`, {
             method: configRequest.method,
-            headers: {
-                 "Content-Type": "application/json",
-                 "accept": "application/json"
-                 //"Authorization": `${configRequest.typeToken} ${configRequest.token}` 
-            },
-            body : body
+            headers: configRequest.headers,
+            body: body
         });
 
         if (!response.ok) {

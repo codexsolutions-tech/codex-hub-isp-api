@@ -1,13 +1,29 @@
 import { container } from "tsyringe";
 import IDBContext from "../../infrastructure/interfaces/IDbContext";
 import DBContext from "../../infrastructure/database/DBContext";
-import IService from "../../application/interfaces/IService";
-import Service from "../../application/services/Service";
 import IProvedorRepository from "../../core/interfaces/IProvedorRepository";
 import ProvedorRepository from "../../infrastructure/repositories/provedor.repository";
-import ReceitanetServices from "../../infrastructure/apis/receitanet/ReceitanetServices";
+import IProvedorServices from "../../application/interfaces/IProvedorServices";
+import ProvedorServices from "../../application/services/ProvedorServices";
+import ApiReceitanetServices from "../../infrastructure/apis/receitanet/ApiReceitanetServices";
+import IApiReceitanetServices from "../../infrastructure/apis/receitanet/interface/IApiReceitanetServices";
+import ReceitanetServices from "../../application/services/ReceitanetServices";
+import IReceitanetServices from "../../application/interfaces/IReceitanetServicest";
+import ITokenService from "../../application/interfaces/ItokenService";
+import TokenService from "../../application/services/TokenService";
+import IApiIxcSoftService from "../../infrastructure/apis/ixcsoft/interfaces/IApiIxcSoftService";
+import ApiIxcSoftService from "../../infrastructure/apis/ixcsoft/ApiIxcSoftService";
+import IIxcSoftServices from "../../application/interfaces/IIxcSoftServices";
+import IxcSoftServices from "../../application/services/IxcSoftServices";
+
+
 
 
 container.registerSingleton<IDBContext>("IDBContext", DBContext);
-container.registerSingleton<IService>("IService", ReceitanetServices);
+container.registerSingleton<ITokenService>("ITokenService", TokenService);
+container.registerSingleton<IIxcSoftServices>("IIxcSoftServices", IxcSoftServices);
+container.registerSingleton<IReceitanetServices>("IReceitanetServices", ReceitanetServices);
+container.registerSingleton<IApiReceitanetServices>("IApiReceitanetServices", ApiReceitanetServices);
+container.registerSingleton<IApiIxcSoftService>("IApiIxcSoftService", ApiIxcSoftService);
 container.registerSingleton<IProvedorRepository>("IProvedorRepository", ProvedorRepository);
+container.registerSingleton<IProvedorServices>("IProvedorServices", ProvedorServices)
