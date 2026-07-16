@@ -1,13 +1,15 @@
 export type clienteDto = {
     dadosCadastrais:dadosCadastrais;
-    endereco:endereco,
-    plano?:plano,
-    servidor?:servidor,
-    consumos?:consumos,
-    ultimasFaturas?:fatura[]
+    endereco:enderecoDto;
+    plano?:planoDto[];
+    servidor?:servidorDto;
+    consumos?:consumosDto;
+    ultimasFaturas?:faturaDto[];
+    isBloqueado?: boolean;
+    data_bloqueio?: Date;
 }
 
-type dadosCadastrais = {
+export type dadosCadastrais = {
     nome:string,
     cpfCnpj:string,
     email:string,
@@ -15,7 +17,7 @@ type dadosCadastrais = {
     inscricao:string|null
 }
 
-type endereco = {
+export type enderecoDto = {
     logradouro:string,
     complemento:string,
     bairro:string,
@@ -24,33 +26,33 @@ type endereco = {
     cep:string|null
 }
 
-type plano = {
+export type planoDto = {
     id:number,
     descricao:string,
-    valor:string,
+    valor:number,
     quantidade:number,
-    total:string
+    total:number
 }
 
-type servidor = {
+type servidorDto = {
     isManutencao:boolean,
     manutencaoMensagem:string
 }
-type consumos = {
+export type consumosDto = {
     consumoMensalLabels:string[],
     consumoMensalDown:number[],
     consumoMensalUp:number[]
 }
-type fatura = {
+export type faturaDto = {
     id:number,
     valor:number,
     valorPago:number,
-    dataVencimento:string,
+    dataVencimento:string | null,
     dataPagamento:string | null,
     linkFatura:string,
     linkFaturaPdf:string,
     linkRecibo:string,
-    qrCode:string,
-    qrCodeImg:string,
+    qrCode:string | null,
+    qrCodeImg:string | null,
     linhaDigitavel:string
 }

@@ -9,7 +9,7 @@ import ApiReceitanetServices from "../../infrastructure/apis/receitanet/ApiRecei
 import IApiReceitanetServices from "../../infrastructure/apis/receitanet/interface/IApiReceitanetServices";
 import ReceitanetServices from "../../application/services/ReceitanetServices";
 import IReceitanetServices from "../../application/interfaces/IReceitanetServicest";
-import ITokenService from "../../application/interfaces/ItokenService";
+import ITokenService from "../../application/interfaces/ITokenService";
 import TokenService from "../../application/services/TokenService";
 import IApiIxcSoftService from "../../infrastructure/apis/ixcsoft/interfaces/IApiIxcSoftService";
 import ApiIxcSoftService from "../../infrastructure/apis/ixcsoft/ApiIxcSoftService";

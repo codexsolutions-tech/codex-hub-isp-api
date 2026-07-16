@@ -8,7 +8,7 @@ import { clienteDto } from "../../application/Dtos/clienteDto";
 import IIxcSoftServices from "../../application/interfaces/IIxcSoftServices";
 
 @injectable()
-export default class DadosClienteController {
+export default class ClienteController {
 
     private readonly _receitaNetService:IReceitanetServices;
     private readonly _ixcSoftService:IIxcSoftServices;
@@ -46,17 +46,43 @@ export default class DadosClienteController {
     
                 return res.json(retorno);
             }
-        } catch (error) {
+        } catch (error:any) {
 
-            const retorno: retornoPadrao<null> = {
+            const retorno: retornoPadrao<any> = {
                 statusCode:500,
                 message:"Dados Cliente "+ data.gerenciador,
-                data: null 
+                data: error.message
             }
             
             return res.json(retorno);
         }
+    }
 
+    async ObterFaturas(req:Request, res:Response){
 
+        const data = req.body;
+        if(data.gerenciador === eGerenciador.RECEITANET){
+
+            const faturas = await this._receitaNetService.ObterFaturas(data.token)
+            const retorno: retornoPadrao<any> = {
+                    statusCode:200,
+                    message:"Faturas "+ data.gerenciador,
+                    data: faturas 
+                }
+    
+                return res.json(retorno);
+        }
+
+        if(data.gerenciador === eGerenciador.IXCSOFT){
+
+            const faturas = await this._ixcSoftService.ObterFaturas(data.cpfCnpj, data.codigoProvedor);
+            const retorno: retornoPadrao<any> = {
+                    statusCode:200,
+                    message:"Faturas "+ data.gerenciador,
+                    data: faturas 
+                }
+    
+                return res.json(retorno);
+        }
     }
 }

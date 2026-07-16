@@ -10,6 +10,6 @@ app.get('/hub-api-isp', (req, res) => res.json({"message":"Check"}))
 app.use('/v1', routes)
 
 
-app.listen(3010, () => {
+app.listen(3010,  () => {
     console.log("Servidor iniciado.");
 });

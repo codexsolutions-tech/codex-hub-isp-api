@@ -1,7 +1,12 @@
+import { chamadoDto } from "../Dtos/chamadoDto";
 import { clienteDto } from "../Dtos/clienteDto";
-import { tokenDto } from "../Dtos/tokenDto";
 
 export default interface IReceitanetServices {
-    ObterToken(cpf:string, codigoProvedor:string) : Promise<tokenDto>
+    
     ObterDadosCliente(token:string): Promise<clienteDto>
+    ObterFaturas(token: string) : Promise<any>;
+    ObterChamados(token:string) : Promise<chamadoDto[]>;
+    AbrirNovoChamado(token:string, payload:object) : Promise<number>;
+    EnviarRespostaChamado(token:string, idChamado:number, mensagem:string) : Promise<any>
+    RespostasDoChamado(token: string, idChamado: number) : Promise<any>
 }

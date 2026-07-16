@@ -1,3 +1,4 @@
+
 export default class Fatura {
     public Id:number = 0;
     public Valor:number = 0.0;

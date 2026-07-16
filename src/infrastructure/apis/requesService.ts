@@ -8,7 +8,7 @@ export default class RequestService {
         this.URLBase = urlBase;
     }
 
-    public async Requst<T>(configRequest:configRequest) : Promise<T> {
+    public async Requst(configRequest:configRequest) : Promise<Response> {
         
         const body = configRequest.body === null ? "" :  JSON.stringify(configRequest.body);            
         
@@ -24,8 +24,6 @@ export default class RequestService {
             );
         }
 
-        const retorno = await response.json() as T;
-
-        return retorno;
+        return response;
     }
 }

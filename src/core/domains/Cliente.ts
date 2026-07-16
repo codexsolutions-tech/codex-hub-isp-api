@@ -10,10 +10,12 @@ export default class Cliente {
     public DadosCadastrais:DadosCadastraisVO = new DadosCadastraisVO();
     public Endereco:EnderecoVo = new EnderecoVo()
     public UtimasFaturas:Fatura[] = [];
-    public Consumo:Consumo   = new Consumo();
-    public Produto:Plano = new Plano();
+    public Consumo:Consumo = new Consumo();
+    public Produto:Plano[] = [];
     public Servidor:ServidorVO = new ServidorVO();
     public Contrato:string = "";
     public FaturaVencida:boolean = false;
     public PromessaLiberado:boolean = true;
+    public IsBloqueado: boolean = false;
+    public DataBloqueio: Date = new Date();
 }   
