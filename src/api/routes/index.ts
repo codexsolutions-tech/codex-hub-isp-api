@@ -1,0 +1,16 @@
+import { Router } from "express";
+import clienteRoute from "./cliente.route";
+import tokenRoute from "./token.route";
+import provedorRoute from "./provedor.route";
+import chamadoRoute from "./chamado.route";
+import painelRouter from "./painel.route";
+
+const routes = Router();
+
+routes.use('/login', tokenRoute);
+routes.use("/", clienteRoute);
+routes.use("/provedores", provedorRoute);
+routes.use("/chamados", chamadoRoute);
+routes.use("/painel", painelRouter);
+
+export default routes;
