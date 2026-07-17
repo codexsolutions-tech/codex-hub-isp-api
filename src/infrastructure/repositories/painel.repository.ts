@@ -18,7 +18,7 @@ export default class PainelRepository implements IPainelRepository {
 
         const insert =  `INSERT INTO marketing_anuncios 
             (titulo, subtitulo, descricao, link_imagem, link_acao, codigo_provedor_fk, tipo, ativo) 
-            VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id`;
+            VALUES ($1,$2,$3,$4,$5,$6,$7, $8) RETURNING id`;
 
         const id = await this._db.Execulte<any>(insert, [anuncio.titulo, anuncio.subtitulo, anuncio.descricao, anuncio.link_imagem, anuncio.link_acao, anuncio.codigo_provedor_fk, anuncio.tipo, anuncio.ativo]);
 
