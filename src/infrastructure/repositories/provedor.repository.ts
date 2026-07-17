@@ -97,7 +97,7 @@ export default class ProvedorRepository implements IProvedorRepository{
     }
 
     async ObterBanners(codigo:string) : Promise<any> {
-        const select = `select * from marketing_banner where codigo_provedor_fk = $1;`;
+        const select = `select * from marketing_banners where codigo_provedor_fk = $1;`;
 
         const result = await this._db.Execulte<any>(select, [codigo])
 
@@ -161,10 +161,6 @@ export default class ProvedorRepository implements IProvedorRepository{
             return result;
 
         throw new Error("Não foi possivle alterar")
-    }
-
-    async CadastrarBanner() : Promise<any> {
-        
     }
 
     async SalvarIndicacao(indicacao:indicacaoModel) : Promise<any> {
