@@ -15,6 +15,10 @@ import IApiIxcSoftService from "../../infrastructure/apis/ixcsoft/interfaces/IAp
 import ApiIxcSoftService from "../../infrastructure/apis/ixcsoft/ApiIxcSoftService";
 import IIxcSoftServices from "../../application/interfaces/IIxcSoftServices";
 import IxcSoftServices from "../../application/services/IxcSoftServices";
+import IPainelServices from "../../application/interfaces/IPainelService";
+import PainelService from "../../application/services/PainelServices";
+import PainelRepository from "../../infrastructure/repositories/painel.repository";
+import IPainelRepository from "../../core/interfaces/IPainelRepository";
 
 
 
@@ -27,3 +31,5 @@ container.registerSingleton<IApiReceitanetServices>("IApiReceitanetServices", Ap
 container.registerSingleton<IApiIxcSoftService>("IApiIxcSoftService", ApiIxcSoftService);
 container.registerSingleton<IProvedorRepository>("IProvedorRepository", ProvedorRepository);
 container.registerSingleton<IProvedorServices>("IProvedorServices", ProvedorServices)
+container.registerSingleton<IPainelServices>("IPainelServices", PainelService)
+container.registerSingleton<IPainelRepository>("IPainelRepository", PainelRepository)

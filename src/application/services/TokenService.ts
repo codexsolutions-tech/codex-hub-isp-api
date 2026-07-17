@@ -8,6 +8,7 @@ import { contratoLogin } from "../../infrastructure/apis/receitanet/Token";
 import ITokenService from "../interfaces/ITokenService";
 import JwtService from "./JwtServices";
 import { tokenPainelDto } from "../Dtos/tokenPainelDto";
+import { estatus } from "../../common/enuns/estatus";
 
 @injectable()
 export default class TokenService implements ITokenService {
@@ -30,10 +31,19 @@ export default class TokenService implements ITokenService {
         if(provedor === null) 
             throw new Error("Provedor não encontrado.");
 
+        if(provedor.Status === estatus.INATIVO.toString())
+            return {
+                gerenciador: provedor.Gerenciador,
+                codigoProvedor: provedor.ObterCodigoProvedor(),
+                token: "",
+                provedorAtivo: false
+            };
+
         const tokenDto: tokenDto = {
             gerenciador: provedor.Gerenciador,
             codigoProvedor: provedor.ObterCodigoProvedor(),
-            token: ""
+            token: "",
+            provedorAtivo: provedor.Status === estatus.ATIVO.toString()
         };
 
         if(provedor.Gerenciador === eGerenciador.IXCSOFT){
