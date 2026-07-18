@@ -32,8 +32,16 @@ export default class ProvedorRepository implements IProvedorRepository{
 
     async Atualizar(provedorEdite: cadastroProvedorModel) : Promise<Provedor> {
         
-        const update = "UPDATE provedores SET nome_fantasia = $1, codigo_api_gerenciador = $2, chave_api_gerenciador = $3 WHERE codigo_provedor = $4 RETURNING id"
-        const alterado = await this._db.Execulte(update, [provedorEdite.nome_fantasia, provedorEdite.codigo_api_gerenciador, provedorEdite.chave_api_gerenciador, provedorEdite.codigo_provedor])
+        const update =`UPDATE provedores SET 
+            nome_fantasia = $1, 
+            nome_administrador = $2, 
+            codigo_api_gerenciador = $3, 
+            chave_api_gerenciador = $4, 
+            usuario = $5, 
+            senha = $6 
+            WHERE codigo_provedor = $7
+            RETURNING id`
+        const alterado = await this._db.Execulte(update, [provedorEdite.nome_fantasia, provedorEdite.nome_administrador, provedorEdite.codigo_api_gerenciador, provedorEdite.chave_api_gerenciador, provedorEdite.usuario, provedorEdite.senha, provedorEdite.codigo_provedor])
         
         if(alterado.length == 0)
             throw new Error("Não foi possivel cadastrar o provedor.")

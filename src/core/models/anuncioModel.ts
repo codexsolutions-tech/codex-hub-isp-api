@@ -3,8 +3,8 @@ export type anuncioModel = {
     titulo:string;
     subtitulo:string;
     descricao:string;
-    link_imagem:string;
-    link_acao:string;
+    imagem:string;
+    link:string;
     codigo_provedor_fk:number;
     tipo:string;
     ativo:boolean;
