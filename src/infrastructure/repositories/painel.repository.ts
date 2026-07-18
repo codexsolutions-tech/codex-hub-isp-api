@@ -20,7 +20,7 @@ export default class PainelRepository implements IPainelRepository {
             (titulo, subtitulo, descricao, link_imagem, link_acao, codigo_provedor_fk, tipo, ativo) 
             VALUES ($1,$2,$3,$4,$5,$6,$7, $8) RETURNING id`;
 
-        const id = await this._db.Execulte<any>(insert, [anuncio.titulo, anuncio.subtitulo, anuncio.descricao, anuncio.link_imagem, anuncio.link_acao, anuncio.codigo_provedor_fk, anuncio.tipo, anuncio.ativo]);
+        const id = await this._db.Execulte<any>(insert, [anuncio.titulo, anuncio.subtitulo, anuncio.descricao, anuncio.imagem, anuncio.link, anuncio.codigo_provedor_fk, anuncio.tipo, anuncio.ativo]);
 
         return this.ObterAnuncioPorId(id[0].id, anuncio.codigo_provedor_fk)
 
@@ -47,7 +47,7 @@ export default class PainelRepository implements IPainelRepository {
                         `;
 
 
-        const result = await this._db.Execulte<any>(update, [anuncio.titulo, anuncio.subtitulo, anuncio.descricao, anuncio.link_imagem, anuncio.link_acao, anuncio.tipo, anuncio.ativo, anuncio.codigo_provedor_fk, anuncio.id])
+        const result = await this._db.Execulte<any>(update, [anuncio.titulo, anuncio.subtitulo, anuncio.descricao, anuncio.imagem, anuncio.link, anuncio.tipo, anuncio.ativo, anuncio.codigo_provedor_fk, anuncio.id])
 
         const id = result[0].id
         return await this.ObterAnuncioPorId(id, anuncio.codigo_provedor_fk)
