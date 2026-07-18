@@ -31,10 +31,10 @@ export default class PainelService implements IPainelServices {
             anuncio.subtitulo = anuncioEdite.subtitulo;
         if(anuncioEdite.descricao)
             anuncio.descricao = anuncioEdite.descricao;
-        if(anuncioEdite.link_imagem)
-            anuncio.link_imagem = anuncioEdite.link_imagem;
-        if(anuncioEdite.link_acao)
-            anuncio.link_acao = anuncioEdite.link_acao;
+        if(anuncioEdite.imagem)
+            anuncio.imagem = anuncioEdite.imagem;
+        if(anuncioEdite.link)
+            anuncio.link = anuncioEdite.link;
         //if(anuncioEdite.ativo)
         anuncio.ativo = anuncioEdite.ativo;
 

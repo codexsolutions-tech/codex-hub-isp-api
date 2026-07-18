@@ -40,7 +40,17 @@ export default class ProvedorServices implements IProvedorServices {
 
     async Atualizar(update:cadastroProvedorModel) : Promise<provedorPainelDto> {
        
-        const provedorAtualizado =  await this._provedorRepository.Atualizar({ nome_fantasia: update.nome_fantasia, codigo_api_gerenciador: update.codigo_api_gerenciador, chave_api_gerenciador: update.chave_api_gerenciador, codigo_provedor: update.codigo_provedor})
+        const provedorAtualizado =  await this._provedorRepository.Atualizar(
+            { 
+                nome_fantasia: update.nome_fantasia, 
+                nome_administrador: update.nome_administrador,
+                codigo_api_gerenciador: update.codigo_api_gerenciador, 
+                chave_api_gerenciador: update.chave_api_gerenciador, 
+                codigo_provedor: update.codigo_provedor,
+                usuario: update.usuario,
+                senha: update.senha
+
+            })
 
         return {
             id: provedorAtualizado.Id,
