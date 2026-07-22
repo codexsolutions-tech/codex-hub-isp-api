@@ -1,5 +1,5 @@
-import { fatura } from "./clienteDto"
+import { faturaDto } from "./clienteDto"
 
 export type boletos = {
-    boletos:fatura[];
+    boletos:faturaDto[];
 }

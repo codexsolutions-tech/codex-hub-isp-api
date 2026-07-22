@@ -40,7 +40,17 @@ export default class ProvedorServices implements IProvedorServices {
 
     async Atualizar(update:cadastroProvedorModel) : Promise<provedorPainelDto> {
        
-        const provedorAtualizado =  await this._provedorRepository.Atualizar({ nome_fantasia: update.nome_fantasia, codigo_api_gerenciador: update.codigo_api_gerenciador, chave_api_gerenciador: update.chave_api_gerenciador, codigo_provedor: update.codigo_provedor})
+        const provedorAtualizado =  await this._provedorRepository.Atualizar(
+            { 
+                nome_fantasia: update.nome_fantasia, 
+                nome_administrador: update.nome_administrador,
+                codigo_api_gerenciador: update.codigo_api_gerenciador, 
+                chave_api_gerenciador: update.chave_api_gerenciador, 
+                codigo_provedor: update.codigo_provedor,
+                usuario: update.usuario,
+                senha: update.senha
+
+            })
 
         return {
             id: provedorAtualizado.Id,
@@ -78,18 +88,31 @@ export default class ProvedorServices implements IProvedorServices {
     async ObterTema(codigo: string): Promise<temaDto> {
 
         const result = await this._provedorRepository.ObterTema(codigo);
-        
-        const tema:temaDto = {
-            codigo: result.codigo,
-            nome: result.nome,
-            tag: result.tag,
-            accent: result.accent,
-            accent2: result.accent2,
-            glyph: result.glyph,
-            logo_url: result.logo_url
+       
+        if(result){
+
+            const tema:temaDto = {
+                codigo: result.codigo,
+                nome: result.nome,
+                tag: result.tag,
+                accent: result.accent,
+                accent2: result.accent2,
+                glyph: result.glyph,
+                logo_url: result.logo_url
+            }
+
+            return tema;
         }
 
-        return tema;
+        return {
+                codigo: "",
+                nome: "",
+                tag: "",
+                accent: "",
+                accent2: "",
+                glyph: "",
+                logo_url: ''
+            }
     }
 
     async ObterBanners(codigo:string) : Promise<any> {

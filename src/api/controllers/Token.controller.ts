@@ -30,23 +30,34 @@ export default class TokenController{
                 }
                 return res.json(retorno);
             }
-    
-            if(token.multiploCadastro){
-                const retorno: retornoPadrao<tokenDto> = {
-                    statusCode: 200,
-                    message: "Multiplos Cadastros. Escolha um contrato para continuar.",
-                    data: token
+
+            if(token.provedorAtivo){
+
+                if(token.multiploCadastro){
+                    const retorno: retornoPadrao<tokenDto> = {
+                        statusCode: 200,
+                        message: "Multiplos Cadastros. Escolha um contrato para continuar.",
+                        data: token
+                    }
+                    return res.json(retorno);
+                }else{
+        
+                    const retorno: retornoPadrao<tokenDto> = {
+                           statusCode: 200,
+                           message: "Token retornado com sucesso.",
+                           data: token
+                       }
+                   return res.json(retorno);
                 }
-                return res.json(retorno);
-            }else{
-    
-                const retorno: retornoPadrao<tokenDto> = {
-                       statusCode: 200,
-                       message: "Token retornado com sucesso.",
-                       data: token
-                   }
-               return res.json(retorno);
             }
+            
+            const retorno: retornoPadrao<string> = {
+                    statusCode: 401,
+                    message: "Não Autorizado",
+                    data: 'Provedor não está ativo.'
+                }
+            return res.status(401).json(retorno);
+    
 
         } catch (error:any) {
             const retorno: retornoPadrao<string> = {

@@ -11,9 +11,24 @@ painelRouter.post('/provedor/cadastrar', painelController.CadastrarProvedor.bind
 painelRouter.patch('/provedor/atualizar', authMiddleware, painelController.AtualizarProvedor.bind(painelController))
 painelRouter.get('/provedor/temas', authMiddleware, authMiddleware, painelController.ObterTema.bind(painelController));
 painelRouter.put('/provedor/temas', authMiddleware, painelController.AtualizarTema.bind(painelController));
-painelRouter.get('/provedor/banners', authMiddleware, painelController.ObterBanner.bind(painelController));
+
+
+// MARKETING - ALERTAS - INFORMATIVOS
+
+// ANUNCIOS
+painelRouter.post('/provedor/anuncios', authMiddleware, painelController.GravarAnuncio.bind(painelController));
 painelRouter.get('/provedor/anuncios', authMiddleware, painelController.ObterAnuncios.bind(painelController) );
-painelRouter.get('/provedor/indicacoes', authMiddleware, painelController.ObterIndicacoes.bind(painelController)) 
-painelRouter.get('/provedor/avaliacoes', authMiddleware, painelController.ObterAvaliacaoServico.bind(painelController))
+painelRouter.patch('/provedor/anuncios/:id', authMiddleware, painelController.EditarAnuncio.bind(painelController));
+painelRouter.delete('/provedor/anuncios/:id', authMiddleware, painelController.ExcluirAnuncio.bind(painelController));
+
+// BANNERS
+painelRouter.post('/provedor/banners', authMiddleware, painelController.GravarBanner.bind(painelController));
+painelRouter.get('/provedor/banners', authMiddleware, painelController.ObterBanner.bind(painelController));
+painelRouter.patch('/provedor/banners/:id', authMiddleware, painelController.EditarBanner.bind(painelController))
+painelRouter.delete('/provedor/banners/:id', authMiddleware, painelController.ExcluirBanner.bind(painelController))
+
+
+painelRouter.get('/provedor/indicacoes', authMiddleware, painelController.ObterIndicacoes.bind(painelController)); 
+painelRouter.get('/provedor/avaliacoes', authMiddleware, painelController.ObterAvaliacaoServico.bind(painelController));
 
 export default painelRouter;

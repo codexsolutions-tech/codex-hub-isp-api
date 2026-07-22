@@ -6,6 +6,7 @@ export type tokenDto = {
     isContrassenha?:boolean
     contratos?: contratoLoginDto[]
     multiploCadastro?:boolean;
+    provedorAtivo?:boolean;
 }
 
 export type contratoLoginDto = {

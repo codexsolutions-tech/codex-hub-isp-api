@@ -4,3 +4,5 @@ build/
 
 *.log
 *.env
+.vscode
+src/infrastructure/firebase/chave/*.json
