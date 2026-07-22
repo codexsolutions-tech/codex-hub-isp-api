@@ -48,7 +48,10 @@ export default class PainelService implements IPainelServices {
     }
 
     async ObterBanners(codigoProvedor: number): Promise<bannerModel[]> {
-        return await this._painelRepository.ObterBanners(codigoProvedor);
+        const banners =  await this._painelRepository.ObterBanners(codigoProvedor);
+        if(banners)
+            return banners;
+        return [];
     }
 
     async EditarBanner(id:number, bannerEdite: bannerModel): Promise<bannerModel> {
