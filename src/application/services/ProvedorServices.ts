@@ -88,18 +88,31 @@ export default class ProvedorServices implements IProvedorServices {
     async ObterTema(codigo: string): Promise<temaDto> {
 
         const result = await this._provedorRepository.ObterTema(codigo);
-        
-        const tema:temaDto = {
-            codigo: result.codigo,
-            nome: result.nome,
-            tag: result.tag,
-            accent: result.accent,
-            accent2: result.accent2,
-            glyph: result.glyph,
-            logo_url: result.logo_url
+       
+        if(result){
+
+            const tema:temaDto = {
+                codigo: result.codigo,
+                nome: result.nome,
+                tag: result.tag,
+                accent: result.accent,
+                accent2: result.accent2,
+                glyph: result.glyph,
+                logo_url: result.logo_url
+            }
+
+            return tema;
         }
 
-        return tema;
+        return {
+                codigo: "",
+                nome: "",
+                tag: "",
+                accent: "",
+                accent2: "",
+                glyph: "",
+                logo_url: ''
+            }
     }
 
     async ObterBanners(codigo:string) : Promise<any> {
