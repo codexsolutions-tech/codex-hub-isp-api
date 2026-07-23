@@ -19,6 +19,26 @@ export default class ProvedorServices implements IProvedorServices {
     
     async Cadastrar(cadastro:cadastroProvedorDto): Promise<provedorPainelDto> {
         
+        const provedor = await this._provedorRepository.ObterProvedorPorCpfCnpj(cadastro.cnpj as string);
+        
+        if(provedor){
+            return {
+                id: provedor.Id,
+                empresa: provedor.Empresa ?? "",
+                cnpj: provedor.CpfCnpj,
+                gerenciador: provedor.Gerenciador,
+                chave_api_gerenciador: provedor.ObterChaveApiGerenciador(),
+                codigo_api_gerenciador: provedor.ObterCodigoApiGerenciador(),
+                codigo_provedor: provedor.ObterCodigoProvedor(),
+                nome_administrador: provedor.NomeAdministrador,
+                nome_fantasia: provedor.NomeFantasia,
+                status: provedor.Status,
+                usuario: provedor.Usuario,
+                dominio_ixc: provedor.DominioIxc,
+                senha: provedor?.Senha()
+            }
+        }
+
         const novoProvedor =  await this._provedorRepository.Cadastrar({empresa: cadastro.empresa, cnpj: cadastro.cnpj, gerenciador: cadastro.gerenciador, nome_administrador: cadastro.nomeAdministrador, usuario: cadastro.usuario, senha: cadastro.senha})
 
         return {

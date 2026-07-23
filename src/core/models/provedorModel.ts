@@ -17,4 +17,5 @@ export type provedorModel = {
     cnpj:string;
     dominio_ixc?:string;
     usuario:string;
+    senha:string;
 }

@@ -59,7 +59,7 @@ export default class PainelController {
 
         const data = req.body as cadastroProvedorDto;
         const provedor = await this._provedorService.Cadastrar(data);
-        const token = await this._tokenService.TokenAcessoPainel({usuario: provedor.usuario, senha: data?.senha as string, codigoProvedor: provedor?.codigo_provedor.toString()});
+        const token = await this._tokenService.TokenAcessoPainel({usuario: provedor.usuario, senha: provedor.senha as string, codigoProvedor: provedor?.codigo_provedor.toString()});
         
         const retorno: retornoPadrao<tokenPainelDto> = {
                 statusCode: 200,

@@ -34,4 +34,5 @@ export type provedorPainelDto = {
     cnpj:string;
     dominio_ixc?:string;
     usuario:string;
+    senha?: string;
 }

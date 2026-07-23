@@ -68,9 +68,33 @@ export default class ProvedorRepository implements IProvedorRepository{
             provedor.nome_administrador,
             provedor.cnpj,
             provedor.dominio_ixc,
-            provedor.usuario
+            provedor.usuario,
+            provedor.senha
         );
     }
+
+    async ObterProvedorPorCpfCnpj(cnpj: string): Promise<Provedor> {
+      
+        const result = await this._db.Execulte<provedorModel>("SELECT * FROM provedores WHERE cnpj = $1", [cnpj])
+        
+        const provedor = result[0];
+
+        return new Provedor(
+            provedor.empresa,
+            provedor.nome_fantasia,
+            provedor.codigo_provedor,
+            provedor.status,
+            provedor.gerenciador,
+            provedor.codigo_api_gerenciador,
+            provedor.chave_api_gerenciador,
+            provedor.nome_administrador,
+            provedor.cnpj,
+            provedor.dominio_ixc,
+            provedor.usuario,
+            provedor.senha
+        );
+    }
+
 
     async ObterProvedor(codigo: string): Promise<Provedor> {
       
@@ -89,7 +113,8 @@ export default class ProvedorRepository implements IProvedorRepository{
             provedor.nome_administrador,
             provedor.cnpj,
             provedor.dominio_ixc,
-            provedor.usuario
+            provedor.usuario,
+            provedor.senha
         );
     }
 
@@ -142,7 +167,8 @@ export default class ProvedorRepository implements IProvedorRepository{
             provedor.nome_administrador,
             provedor.cnpj,
             provedor.dominio_ixc,
-            provedor.usuario
+            provedor.usuario,
+            provedor.senha
         );
     }
 

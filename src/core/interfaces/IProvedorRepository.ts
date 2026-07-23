@@ -22,4 +22,5 @@ export default interface IProvedorRepository{
     AlterarTema(themeModel:themeModel) : Promise<any> 
     SalvarIndicacao(indicacao:indicacaoModel) : Promise<any>
     ObterIndicacoes(codigoProvedor:string) : Promise<any>;
+    ObterProvedorPorCpfCnpj(cnpj: string): Promise<Provedor>
 }

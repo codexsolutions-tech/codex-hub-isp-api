@@ -17,8 +17,9 @@ export default class Provedor {
     public CpfCnpj:string;
     public DominioIxc?:string;
     public Usuario:string;
+    private _Senha:string;
 
-    constructor(empresa:string, nomeFantasia:string, codigoProvedor:number, status:estatus, gerenciador:eGerenciador, codigoApiGerenciador:number, chaveApiGerenciador:string, nomeAdministrador:string, cpfcnpj:string, dominio:string = "", usuario:string){
+    constructor(empresa:string, nomeFantasia:string, codigoProvedor:number, status:estatus, gerenciador:eGerenciador, codigoApiGerenciador:number, chaveApiGerenciador:string, nomeAdministrador:string, cpfcnpj:string, dominio:string = "", usuario:string, senha:string){
         this.Id = uuidv4();
         this.Codigo = this.Id.toString().substring(0,7).toUpperCase();
         this.Empresa = empresa;
@@ -32,6 +33,7 @@ export default class Provedor {
         this.CpfCnpj = cpfcnpj;
         this.DominioIxc = dominio;
         this.Usuario = usuario
+        this._Senha = senha;
     }
 
     public AlterarStatus() : void {
@@ -39,6 +41,11 @@ export default class Provedor {
             this.Status = estatus.INATIVO
         else
             this.Status = estatus.ATIVO
+    }
+
+    public Senha() : string {
+
+       return this._Senha
     }
 
     public ObterCodigoApiGerenciador(){
