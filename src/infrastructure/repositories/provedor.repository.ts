@@ -73,9 +73,11 @@ export default class ProvedorRepository implements IProvedorRepository{
         );
     }
 
-    async ObterProvedorPorCpfCnpj(cnpj: string): Promise<Provedor> {
+    async ObterProvedorPorCpfCnpj(cnpj: string): Promise<Provedor | null> {
       
         const result = await this._db.Execulte<provedorModel>("SELECT * FROM provedores WHERE cnpj = $1", [cnpj])
+        
+        if(result.length < 1) return null;
         
         const provedor = result[0];
 
