@@ -1,4 +1,4 @@
-import { messaging } from "../../infrastructure/firebase/firebase";
+/* import { messaging } from "../../infrastructure/firebase/firebase";
 
 export default class FirebaseService {
 
@@ -16,4 +16,4 @@ export default class FirebaseService {
 
     }
 
-}
+} */
